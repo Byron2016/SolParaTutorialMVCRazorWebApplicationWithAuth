@@ -45,7 +45,7 @@ namespace WebApplication1
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                // options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -56,11 +56,11 @@ namespace WebApplication1
                 // services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            //CompatibilityVersion.Version_2_1
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
                 .AddRazorPagesOptions(options =>
                 {
-                    options.AllowAreas = true;
+                    // options.AllowAreas = true;
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
